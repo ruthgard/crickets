@@ -1,0 +1,140 @@
+\usepackage{xkeyval}
+
+\makeatletter
+\define@cmdkey{rpg}[char@]{name}[]{}
+\define@cmdkey{rpg}[char@]{class}[]{}
+\define@cmdkey{rpg}[char@]{kropp}[]{}
+\define@cmdkey{rpg}[char@]{reaktion}[]{}
+\define@cmdkey{rpg}[char@]{sinne}[]{}
+\define@cmdkey{rpg}[char@]{special}[]{}
+\define@cmdkey{rpg}[char@]{width}[\linewidth]{}
+
+\define@cmdkey{move}[char@]{rubrik}[]{}
+\define@cmdkey{move}[char@]{beskrivning}[]{}
+\define@cmdkey{move}[char@]{grundegenskap}[]{}
+\define@cmdkey{move}[char@]{lyckat}[]{}
+\define@cmdkey{move}[char@]{mitten}[]{}
+\define@cmdkey{move}[char@]{misslyckat}[]{}
+\define@cmdkey{move}[char@]{val}[]{}
+\define@cmdkey{move}[char@]{width}[\linewidth]{}
+
+\define@cmdkey{scenen}[char@]{typ}[]{}
+\define@cmdkey{scenen}[char@]{namn}[]{}
+\define@cmdkey{scenen}[char@]{rubrik}[]{}
+\define@cmdkey{scenen}[char@]{plats}[]{}
+\define@cmdkey{scenen}[char@]{birollett}[]{}
+\define@cmdkey{scenen}[char@]{birolltva}[]{}
+\define@cmdkey{scenen}[char@]{birolltre}[]{}
+\define@cmdkey{scenen}[char@]{width}[\linewidth]{}
+
+\newcommand{\statlabel}{\textsc}
+
+\usepackage{calc,xparse}
+\newlength\mycardwidth
+\setlength\mycardwidth{.75\textwidth}
+\NewDocumentCommand \boxme { O{} }{%
+  \fbox{%
+    \parbox{\linewidth-2\fboxrule-2.5\fboxsep}{\strut #1}%
+  }%
+}
+\NewDocumentCommand \pageme { O{} O{} }{%
+  \begin{minipage}{#1\mycardwidth}
+    \centering\boxme[#2]
+  \end{minipage}%
+}
+\NewDocumentCommand \cardme { O{.75\textwidth} +m }{%
+  \setlength\mycardwidth{#1-2\fboxrule-2\fboxsep}%
+  \fbox{%
+    \begin{minipage}{\mycardwidth}
+      \centering
+      #2%
+    \end{minipage}%
+  }%
+}
+
+\newcommand{\setcharacterstats}[1]{%
+  \begingroup
+  \setkeys{rpg}{name,class,kropp,reaktion,sinne,special,width,#1}%
+  \noindent
+  \cardme[\textwidth]{%
+    \pageme[.69][\statlabel{Namn}: \char@name]%
+    \pageme[.31][\statlabel{\char@class}]
+
+    \pageme[.33][\statlabel{Kropp}: \char@kropp]%
+    \pageme[.34][\statlabel{Reaktion}: \char@reaktion]%
+    \pageme[.33][\statlabel{Sinne}: \char@sinne]
+    \raggedright \textit{Sätt ut +2, +1, 0}
+
+    \pageme[][\statlabel{Specialdrag}:]
+    \raggedright \textit{\char@special}
+  }
+}
+\newcommand{\displaymove}[1]{%
+  \begingroup
+  \setkeys{move}{rubrik,beskrivning,grundegenskap,lyckat,mitten,misslyckat,val,width,#1}%
+  \noindent
+  \cardme[\textwidth]{%
+    \pageme[.69][\statlabel{\char@rubrik}]%
+    \pageme[.31][\statlabel{Slå} +\char@grundegenskap]
+
+    \pageme[.99][\char@beskrivning]
+
+    \pageme[.31][\statlabel{10+}]%
+    \pageme[.69][\char@lyckat]
+
+    \pageme[.31][\statlabel{7-9}]%
+    \pageme[.69][\char@mitten]
+
+    \pageme[.31][\statlabel{2-6}]%
+    \pageme[.69][\char@misslyckat]
+
+    \pageme[.99][\char@val]%
+  }
+}
+\newcommand{\satscen}[1]{%
+  \begingroup
+  \setkeys{scenen}{typ,namn,rubrik,plats,birollett,birolltva,birolltre,width,#1}%
+  \noindent
+  \cardme[\textwidth]{%
+    \pageme[1][\statlabel{\textbf{\char@typ}}]
+
+    \pageme[1][\statlabel{Rubrik:} \char@rubrik]
+
+    \pageme[.31][\statlabel{Huvudroll:} \char@namn]%
+    \pageme[.69][\statlabel{Plats:} \char@plats]
+
+    \pageme[1][\statlabel{Plats:} \char@plats]
+
+    \pageme[.33][\statlabel{Biroll: } \char@birollett]%
+    \pageme[.34][\statlabel{Biroll: } \char@birolltva]%
+    \pageme[.33][\statlabel{Biroll: } \char@birolltre]
+  }
+}
+\newcommand{\rollformular}[1]{%
+  \begingroup
+  \setkeys{rpg}{name,class,kropp,reaktion,sinne,special,width,#1}%
+  \noindent
+  \cardme[\textwidth]{%
+    \pageme[.69][\statlabel{Namn}: \char@name]%
+    \pageme[.31][\statlabel{Koncept}:]
+    \pageme[][\statlabel{Rädsla}:]
+    \pageme[][\statlabel{Drivkraft}:]
+
+    \pageme[.33][\statlabel{Kropp}: \char@kropp]%
+    \pageme[.34][\statlabel{Reaktion}: \char@reaktion]%
+    \pageme[.33][\statlabel{Sinne}: \char@sinne]
+    \pageme[][\statlabel{Specialdrag}:]
+  }
+}
+
+\define@cmdkey{bild}[bild@]{namn}[]{}
+\define@cmdkey{bild}[bild@]{sida}[r]{}
+\newcommand{\bild}[1]{%
+  \begingroup
+  \setkeys{bild}{namn,#1}%
+  \begin{wrapfigure}{\bild@sida}{0.25\textwidth} %this figure will be at the right
+      \centering
+      \includegraphics[width=0.25\textwidth]{\bild@namn}
+  \end{wrapfigure}
+}
+\makeatletter
