@@ -6,7 +6,15 @@
 \usepackage[pdftex]{graphicx}
 \usepackage{calc,xparse,geometry}
 \usepackage{wrapfig}
+\usepackage[pagestyles]{titlesec}
+
 \graphicspath{ {./../Bilder/} }
+\newpagestyle{mine}{%
+\sethead[\thepage][{\raisebox{\dimexpr\headheight + \topmargin + \voffset + 1in-0.75in\relax}[0pt][0pt]{\includegraphics[width = .75\textwidth]{horn}}}][]
+{}{{\raisebox{\dimexpr\headheight + \topmargin + \voffset + 1in-0.75in\relax}[0pt][0pt]{\includegraphics[width = .75\textwidth]{horn}}}}{\thepage}
+\setfoot{}{}{}
+}
+\pagestyle{mine}
 \author{Gustav Ruthgård}
 \title{\MyTitle}
 \date{\today}
