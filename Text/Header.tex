@@ -1,4 +1,4 @@
-\documentclass[a5paper,10pt]{article}
+\documentclass[a5paper,10pt]{report}
 
 \usepackage[utf8]{inputenc}
 \usepackage[swedish]{babel}
@@ -6,7 +6,17 @@
 \usepackage[pdftex]{graphicx}
 \usepackage{calc,xparse,geometry}
 \usepackage{wrapfig}
+\usepackage[pagestyles]{titlesec}
+
 \graphicspath{ {./../Bilder/} }
+\newpagestyle{mine}{%
+\sethead[\thepage][{\raisebox{\dimexpr\headheight + \topmargin + \voffset - 0in\relax}[0pt][0pt]{\includegraphics[width = .75\textwidth]{cornertop}}}][]
+{}{{\raisebox{\dimexpr\headheight + \topmargin + \voffset - 0in\relax}[0pt][0pt]{\includegraphics[width = .75\textwidth]{cornertop}}}}
+{\thepage}
+\setfoot[\thepage][{\raisebox{\dimexpr\headheight + \topmargin + \voffset + 1in-1.5in\relax}[0pt][0pt]{\includegraphics[width = .75\textwidth]{corner}}}][]
+{}{{\raisebox{\dimexpr\headheight + \topmargin + \voffset + 1in-1.5in\relax}[0pt][0pt]{\includegraphics[width = .75\textwidth]{corner}}}}{}
+}
+\pagestyle{mine}
 \author{Gustav Ruthgård}
 \title{\MyTitle}
 \date{\today}
