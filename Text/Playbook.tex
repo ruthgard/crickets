@@ -1,13 +1,14 @@
+\documentclass[a5paper,10pt]{article}
 \newcommand{\MyTitle}{De tillresta - Spelarbok}
-\input{Header}
-\input{macro}
+\include{Header}
+\include{macro}
 \begin{document}
 \maketitle
 \clearpage
-\part{Introduktion}
+\section{Introduktion}
 Det här rollspelets regler baseras på idéer ur Apocalypse World och kan därför räknas som ett så kallat PbtA spel, eller Powered by the Apocalypse spel. Spelardragen är inspirerade av Kult: Divinity Losts spelardrag.
 
-Alla spelare kommer ha karaktärer som är födda i den lilla orten Marylain som ligger 6 mil väster om New Orleans i den amerikanska södern. Din karaktär är född 1977 och har någon gång mellan 1995 och 1999 flyttat ifrån Marylain för jobb eller högre studier. 
+Alla spelare kommer ha karaktärer som är födda i den lilla orten Marylain som ligger 6 mil väster om New Orleans i den amerikanska södern. Din karaktär är född 1977 och har någon gång mellan 1995 och 1999 flyttat ifrån Marylain för jobb eller högre studier.
 \section{Koncept}
 Ditt koncept är grundinriktningen för din rollperson, det definierar vilken typ av karaktär den du spelar har, det ger också en känsla för vilken bakgrund karaktären har. Följande koncept finns att välja bland:
 \begin{itemize}
@@ -50,6 +51,7 @@ Varje gång du misslyckas helt med ett drag och får 6 eller lägre så noterar 
   \item Har någon annan gjort något som bidragit till ett bra spelmöte? Ge en erfarenhetspoäng till den.
 \end{itemize}
 \clearpage
+\part{Koncept}
 \section{Agenten}
 \textit{Du arbetar som någon form av rättvisans beskyddare, det kan till exempel vara en polis, utredare, detektiv, eller hemlig polis. Att ordningen i samhället upprätthålls är ditt ansvar. Jobbet är på obekväma tider och du förväntas kunna ställa upp när som helst.}
 \vskip1em
@@ -250,69 +252,21 @@ Välj en drivkraft eller hitta på en egen till din karaktär.
 Skapa fyra scener enligt reglerna i Bakgrundsskapande. En av scenerna du skapar kommer vara hemlig och byggas ut av dig och spelledaren tillsammans. Du kommer få ytterligare en scen av spelledaren som blir känd för alla spelare.
 
 \satscen{
-  typ = Öppen scen
-}
-\satscen{
-  typ = Öppen scen
-}
-\satscen{
-  typ = Öppen scen
+  typ = Hemlig scen
 }
 \satscen{
   typ = Spelledar scen
 }
 \satscen{
-  typ = Hemlig scen
+  typ = Öppen scen
 }
-\input{PlayerMoves}
+\satscen{
+  typ = Öppen scen
+}
+\satscen{
+  typ = Öppen scen
+}
+\include{PlayerMoves}
 \clearpage
-\section*{Skada}
-\begin{table}[!h]
-\begin{tabular}{|c| l l|}
-\hline & Frisk & \\
-\hline & Allvarligt sår & \textbf{Nedsatt fysik:} \\
-& Allvarligt sår &  \textit{-1 Kropp} \\
-\hline & Kritiskt sår &  \textbf{Nedsatt fysik:} \\
-& \textit{Vårda inom kort för att inte dö} & \textit{-1 Kropp} \\
-\hline
-\end{tabular}
-\end{table}
-\section*{Välmående}
-\begin{table}[!h]
-\begin{tabular}{|c| l l|}
-\hline & Kontrollerad & \\
-\hline & Olustig & \textbf{Lindrig stress:} \\
-& Ofokuserad &  \textit{-1 Sinne} \\
-\hline & Skakad &  \textbf{Allvarlig stress:} \\
-& Stressad & \textit{-1 Självkontroll, -2 Sinne} \\
-& Neurotisk &  \\
-\hline & Ångestdrabbad &  \textbf{Kritisk stress:} \\
- & Irrationell &  \textit{-2 Självkontroll, -3 Sinne} \\
- & Okontrollerad &  \\
-\hline & Nedbruten & Spelledaren gör ett drag \\
-\hline
-\end{tabular}
-\end{table}
-\clearpage
-\section*{Rollformulär}
-\rollformular{}
-\subsection*{Spelardrag}
-\begin{table}[!h]
-  \begin{tabular}{l l}
-    Drag & Grundegenskap \\
-    \hline \hline
-    Attackera & +Kropp\\
-    Undvika & +Kropp\\
-    Tar skada & +Kropp\\
-    Överblicka & +Reaktion\\
-    Läsa av en person & +Reaktion\\
-    Undersöka & +Sinne\\
-    Övertala & +Sinne\\
-    Agera under hot & +Sinne\\
-    Självkontroll & +Sinne \\
-    Hjälpa eller motarbeta & +Samma\\ [1ex]
-    \hline
-  \end{tabular}
-\end{table}
-%\input{Disadvantages}
+\includepdf[pages=-]{Tillresta-formular.pdf}
 \end{document}
