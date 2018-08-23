@@ -1,7 +1,7 @@
 \documentclass[a5paper,10pt]{article}
 \newcommand{\MyTitle}{De tillresta - Spelarbok}
-\input{Header}
-\input{macro}
+\include{Header}
+\include{macro}
 \begin{document}
 \maketitle
 \clearpage
@@ -266,7 +266,7 @@ Skapa fyra scener enligt reglerna i Bakgrundsskapande. En av scenerna du skapar 
 \satscen{
   typ = Öppen scen
 }
-\input{PlayerMoves}
+\include{PlayerMoves}
 \clearpage
 \includepdf[pages=-]{Tillresta-formular.pdf}
 \end{document}
